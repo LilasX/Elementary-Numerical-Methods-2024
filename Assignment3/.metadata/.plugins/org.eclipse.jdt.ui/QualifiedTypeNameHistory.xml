@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.math.BigDecimal"/>
+    <fullyQualifiedTypeName name="java.math.MathContext"/>
+    <fullyQualifiedTypeName name="java.math.RoundingMode"/>
+    <fullyQualifiedTypeName name="org.jfree.data.xy.XYSeries"/>
+    <fullyQualifiedTypeName name="org.jfree.data.xy.XYSeriesCollection"/>
+    <fullyQualifiedTypeName name="org.jfree.chart.ChartFactory"/>
+    <fullyQualifiedTypeName name="org.jfree.chart.JFreeChart"/>
+    <fullyQualifiedTypeName name="java.awt.geom.Ellipse2D"/>
+    <fullyQualifiedTypeName name="org.jfree.chart.ChartPanel"/>
+    <fullyQualifiedTypeName name="javax.swing.JFrame"/>
+    <fullyQualifiedTypeName name="org.jfree.chart.plot.XYPlot"/>
+    <fullyQualifiedTypeName name="org.jfree.chart.renderer.xy.XYLineAndShapeRenderer"/>
+</qualifiedTypeNameHistroy>

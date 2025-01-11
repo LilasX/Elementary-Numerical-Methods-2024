@@ -1,0 +1,36 @@
+package client;
+
+public class ChordMethod 
+{
+    public static void main(String[] args) 
+    {
+        // Initial guess for x_0
+        double x0 = 0.1;
+        // Number of iterations
+        int iterations = 50;
+        
+        // Print the initial guess
+        System.out.printf("x(0) = %.10f%n", x0);
+        
+        // Perform Chord's method iterations and print each step
+        double x = x0;
+        for (int k = 1; k <= iterations; k++) {
+            // Compute the next value using Chord's method
+            x = chordIteration(x, x0);
+            // Print the result of the current iteration
+            System.out.printf("x(%d) = %.10f%n", k, x);
+        }
+    }
+
+    // Chord iteration formula to calculate next value
+    public static double chordIteration(double x, double x0) 
+    {
+        // f(x) = x^3 - 5
+        double f_x = Math.pow(x, 3) - 5;
+        // f'(x0) = 3 * x0^2 (fixed for the initial guess x0)
+        double f_prime_x0 = 3 * Math.pow(x0, 2);
+        
+        // Chord iteration formula: x(k+1) = x(k) - (f(x) / f'(x0))
+        return x - (f_x / f_prime_x0);
+    }
+}

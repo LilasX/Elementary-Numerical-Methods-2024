@@ -1,0 +1,48 @@
+package client;
+
+import java.io.*;
+import java.nio.file.*;
+
+public class NewtonCubeRoot 
+{
+    public static void main(String[] args) 
+    {
+    	try {
+            // Get the current working directory (project root)
+            String currentDir = System.getProperty("user.dir");
+
+            // Construct the full path to the Python script
+            String pythonScriptPath = currentDir + File.separator + "cuberoot5.py";  // Relative path to the script
+            
+            // Command to run the Python script
+            String pythonCommand = "python3"; // or "python3" on some systems
+
+            // Create a ProcessBuilder instance with the command and the script path
+            ProcessBuilder processBuilder = new ProcessBuilder(pythonCommand, pythonScriptPath);
+            
+            // Optional: Redirect the error stream to the standard output
+            processBuilder.redirectErrorStream(true);
+
+            // Start the process
+            Process process = processBuilder.start();
+
+            // Read the output from the Python script
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String line;
+            while ((line = reader.readLine()) != null) 
+            {
+                System.out.println(line);
+            }
+
+            // Wait for the process to complete
+            int exitCode = process.waitFor();
+            System.out.println("Python script executed with exit code: " + exitCode);
+            
+        } 
+    	catch (IOException | InterruptedException e) 
+    	{
+            e.printStackTrace();
+        }
+    }
+
+}

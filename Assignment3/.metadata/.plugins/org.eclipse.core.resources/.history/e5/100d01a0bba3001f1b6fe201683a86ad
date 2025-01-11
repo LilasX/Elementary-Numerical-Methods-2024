@@ -1,0 +1,39 @@
+package client;
+
+import java.math.BigDecimal;
+import java.math.MathContext;
+
+public class ChordMethodBigDecimal {
+    public static void main(String[] args) {
+        // Initial guess for x_0 (use BigDecimal for high precision)
+        BigDecimal x0 = new BigDecimal("0.1");
+        // Number of iterations (10 iterations in this case)
+        int iterations = 10;
+        
+        // Set the precision for BigDecimal (set a reasonably high precision)
+        MathContext mc = new MathContext(100);  // 100 decimal places of precision
+        
+        // Print the initial guess
+        System.out.printf("x(0) = %.100f%n", x0);
+
+        // Perform Chord's method iterations and print each step starting from k = 1
+        BigDecimal x = x0;
+        for (int k = 1; k <= iterations; k++) { // Change the loop to go from k=1 to k=10
+            // Compute the next value using Chord's method
+            x = chordIteration(x, x0, mc);
+            // Print the result of the current iteration
+            System.out.printf("x(%d) = %.100f%n", k, x); // Print iteration number starting from 1
+        }
+    }
+
+    // Chord iteration formula to calculate next value using BigDecimal
+    public static BigDecimal chordIteration(BigDecimal x, BigDecimal x0, MathContext mc) {
+        // f(x) = x^3 - 5
+        BigDecimal f_x = x.pow(3, mc).subtract(new BigDecimal("5"));
+        // f'(x0) = 3 * x0^2
+        BigDecimal f_prime_x0 = x0.pow(2, mc).multiply(new BigDecimal("3"));
+        
+        // Chord iteration formula: x(k+1) = x(k) - (f(x) / f'(x0))
+        return x.subtract(f_x.divide(f_prime_x0, mc));
+    }
+}
